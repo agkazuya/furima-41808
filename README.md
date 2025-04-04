@@ -9,6 +9,8 @@
 | encrypted_password | string | null: false |
 | first_name         | string | null: false |
 | last_name          | string | null: false |
+| first_name_kana    | string | null: false |
+| last_name_kana     | string | null: false |
 | date_of_birth      | date   | null: false |
 
 
@@ -18,13 +20,12 @@
 | --------------- | ---------- | ----------- |
 | name            | string     | null: false |
 | description     | text       | null: false |
-| price           | string     | null: false |
-| condition       | string     | null: false |
-| category        | string     | null: false |
-| shipping_cost   | string     | null: false |
-| stock_quantity  | string     | null: false |
-| shipping_region | string     | null: false |
-| shipping_time   | date       | null: false |
+| price           | integer    | null: false |
+| condition       | integer    | null: false |
+| category        | integer    | null: false |
+| shipping_cost   | integer    | null: false |
+| shipping_region | integer    | null: false |
+| shipping_time   | integer    | null: false |
 | user            | references | null: false, foreign_key: true |
 
 
@@ -34,23 +35,16 @@
 | -------------- | ---------- | ----------- |
 | user           | references | null: false, foreign_key: true |
 | item           | references | null: false, foreign_key: true |
-| quantity       | string     | null: false |
-| purchase_price | string     | null: false |
-| purchase_date  | date       | null: false |
-| payment_method | string     | null: false |
-| status         | string     | null: false |
-
 
 ## shipping_address テーブル
 
 | Column        | Type       | Options     |
 | ------------- | ---------- | ----------- |
-| receiver_name | string     | null: false |
 | postal_code   | string     | null: false |
 | address_state | string     | null: false |
 | address_city  | string     | null: false |
 | address_line  | string     | null: false |
-| build         | string     | null: false |
+| build         | string     |
 | phone_number  | string     | null: false |
 | order         | references | null: false, foreign_key: true |
 
@@ -58,7 +52,7 @@
 ### Association
 user model
 has_many : items
-has_many : order
+has_many : orders
 
 
 item model

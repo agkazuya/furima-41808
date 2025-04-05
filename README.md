@@ -38,15 +38,15 @@
 
 ## shipping_address テーブル
 
-| Column          | Type       | Options     |
-| --------------- | ---------- | ----------- |
-| postal_code     | string     | null: false |
-| shipping_region | string     | null: false |
-| address_city    | string     | null: false |
-| address_line    | string     | null: false |
-| build           | string     |
-| phone_number    | string     | null: false |
-| order           | references | null: false, foreign_key: true |
+| Column             | Type       | Options     |
+| ------------------ | ---------- | ----------- |
+| postal_code        | string     | null: false |
+| shipping_region_id | integer    | null: false |
+| address_city       | string     | null: false |
+| address_line       | string     | null: false |
+| build              | string     |
+| phone_number       | string     | null: false |
+| order              | references | null: false, foreign_key: true |
 
 
 ### Association

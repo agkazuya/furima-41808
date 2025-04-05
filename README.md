@@ -4,7 +4,7 @@
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| username           | string | null: false |
+| nickname           | string | null: false |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false |
 | first_name         | string | null: false |
@@ -16,17 +16,17 @@
 
 ## item テーブル
 
-| Column          | Type       | Options     |
-| --------------- | ---------- | ----------- |
-| name            | string     | null: false |
-| description     | text       | null: false |
-| price           | integer    | null: false |
-| condition       | integer    | null: false |
-| category        | integer    | null: false |
-| shipping_cost   | integer    | null: false |
-| shipping_region | integer    | null: false |
-| shipping_time   | integer    | null: false |
-| user            | references | null: false, foreign_key: true |
+| Column             | Type       | Options     |
+| ------------------ | ---------- | ----------- |
+| name               | string     | null: false |
+| description        | text       | null: false |
+| price              | integer    | null: false |
+| condition-id       | integer    | null: false |
+| category-id        | integer    | null: false |
+| shipping_cost-id   | integer    | null: false |
+| shipping_region-id | integer    | null: false |
+| shipping_time-id   | integer    | null: false |
+| user               | references | null: false, foreign_key: true |
 
 
 ## order テーブル

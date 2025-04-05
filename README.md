@@ -21,11 +21,11 @@
 | name               | string     | null: false |
 | description        | text       | null: false |
 | price              | integer    | null: false |
-| condition-id       | integer    | null: false |
-| category-id        | integer    | null: false |
-| shipping_cost-id   | integer    | null: false |
-| shipping_region-id | integer    | null: false |
-| shipping_time-id   | integer    | null: false |
+| condition_id       | integer    | null: false |
+| category_id        | integer    | null: false |
+| shipping_cost_id   | integer    | null: false |
+| shipping_region_id | integer    | null: false |
+| shipping_time_id   | integer    | null: false |
 | user               | references | null: false, foreign_key: true |
 
 
@@ -38,15 +38,15 @@
 
 ## shipping_address テーブル
 
-| Column        | Type       | Options     |
-| ------------- | ---------- | ----------- |
-| postal_code   | string     | null: false |
-| address_state | string     | null: false |
-| address_city  | string     | null: false |
-| address_line  | string     | null: false |
-| build         | string     |
-| phone_number  | string     | null: false |
-| order         | references | null: false, foreign_key: true |
+| Column          | Type       | Options     |
+| --------------- | ---------- | ----------- |
+| postal_code     | string     | null: false |
+| shipping_region | string     | null: false |
+| address_city    | string     | null: false |
+| address_line    | string     | null: false |
+| build           | string     |
+| phone_number    | string     | null: false |
+| order           | references | null: false, foreign_key: true |
 
 
 ### Association

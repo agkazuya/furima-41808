@@ -1,5 +1,6 @@
 # Pin npm packages by running ./bin/importmap
 
+pin "item_price", to: "item_price.js"
 pin "application"
 pin "@hotwired/turbo-rails", to: "turbo.min.js"
 pin "@hotwired/stimulus", to: "stimulus.min.js"

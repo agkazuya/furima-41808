@@ -77,6 +77,31 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('User must exist')
       end
+      it 'categoryが---では投稿できない' do
+        @item.category_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
+      end
+      it 'conditionが---では投稿できない' do
+        @item.condition_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Condition must be other than 1')
+      end
+      it 'shipping_costが---では投稿できない' do
+        @item.shipping_cost_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Shipping cost must be other than 1')
+      end
+      it 'shipping_regionが---では投稿できない' do
+        @item.shipping_region_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Shipping region must be other than 1')
+      end
+      it 'shipping_timeが---では投稿できない' do
+        @item.shipping_time_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Shipping time must be other than 1')
+      end
     end
   end
 end

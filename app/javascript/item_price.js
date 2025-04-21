@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+const price = () => {
   const priceInput = document.getElementById('item-price');
   const feeDisplay = document.getElementById('add-tax-price');
   const profitDisplay = document.getElementById('profit');
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function calculateProfit(price, fee) {
     return price - fee;
   }
-});
+};
 
 window.addEventListener("turbo:load", price);
 window.addEventListener("turbo:render", price);

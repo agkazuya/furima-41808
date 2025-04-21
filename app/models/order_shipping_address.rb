@@ -11,7 +11,7 @@ class OrderShippingAddress
     validates :phone_number, presence: true, format: { with: /\A\d{10,11}\z/ }
     validates :item_id
     validates :user_id
-    validates :token, presence: true
+    validates :token
   end
 
   def save

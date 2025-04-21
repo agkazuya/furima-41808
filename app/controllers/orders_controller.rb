@@ -3,10 +3,6 @@ class OrdersController < ApplicationController
   before_action :set_item
   before_action :ensure_purchasable, only: [:new, :create]
 
-  def index
-    @orders = @item.orders
-  end
-
   def new
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     @order_shipping_address = OrderShippingAddress.new

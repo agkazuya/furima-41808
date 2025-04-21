@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe OrderShippingAddress, type: :model do
   before do
     user = FactoryBot.create(:user)
-    @order_shipping_address = FactoryBot.build(:order_shipping_address, user_id: user.id)
+    item = FactoryBot.create(:item)
+    @order_shipping_address = FactoryBot.build(:order_shipping_address, user_id: user.id, item_id: item.id)
   end
 
   context '内容に問題ない場合' do
@@ -52,6 +53,11 @@ RSpec.describe OrderShippingAddress, type: :model do
       @order_shipping_address.valid?
       expect(@order_shipping_address.errors.full_messages).to include('Phone number is invalid')
     end
+    it 'phone_numberが12桁以上だと保存できないこと' do
+      @order_shipping_address.phone_number = '000134567891'
+      @order_shipping_address.valid?
+      expect(@order_shipping_address.errors.full_messages).to include('Phone number is invalid')
+    end
     it 'phone_numberが数字以外だと保存できないこと' do
       @order_shipping_address.phone_number = '000-1234-1541'
       @order_shipping_address.valid?
@@ -61,6 +67,11 @@ RSpec.describe OrderShippingAddress, type: :model do
       @order_shipping_address.user_id = nil
       @order_shipping_address.valid?
       expect(@order_shipping_address.errors.full_messages).to include("User can't be blank")
+    end
+    it 'itemが紐づいていないと購入できない' do
+      @order_shipping_address.item_id = nil
+      @order_shipping_address.valid?
+      expect(@order_shipping_address.errors.full_messages).to include("Item can't be blank")
     end
     it 'token が空では保存できない' do
       @order_shipping_address.token = nil

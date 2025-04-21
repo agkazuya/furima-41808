@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_owner!,      only: [:edit, :update, :destroy]
+  before_action :ensure_not_sold!,   only: [:edit, :update]
   def index
     @items = Item.all.order(created_at: :desc)
   end
@@ -43,6 +45,18 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def ensure_owner!
+    return if @item.user_id == current_user.id
+
+    redirect_to root_path
+  end
+
+  def ensure_not_sold!
+    return unless @item.sold?
+
+    redirect_to root_path
+  end
 
   def set_item
     @item = Item.find(params[:id])

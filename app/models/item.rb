@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_region
   belongs_to_active_hash :shipping_time
   belongs_to :user
+  has_one    :order
   has_one_attached :image
 
   validates :name, presence: true
@@ -18,4 +19,8 @@ class Item < ApplicationRecord
   validates :shipping_region_id, numericality: { other_than: 1 }, presence: true
   validates :shipping_time_id, numericality: { other_than: 1 }, presence: true
   validates :image, presence: true
+
+  def sold?
+    order.present?
+  end
 end

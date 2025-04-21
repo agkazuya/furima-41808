@@ -4,11 +4,11 @@ class OrderShippingAddress
                 :token
 
   with_options presence: true do
-    validates :postal_code, presence: true, format: { with: /\A\d{3}-\d{4}\z/ }
-    validates :shipping_region_id, presence: true, numericality: { only_integer: true, other_than: 1 }
-    validates :address_city, presence: true
-    validates :address_line, presence: true
-    validates :phone_number, presence: true, format: { with: /\A\d{10,11}\z/ }
+    validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/ }
+    validates :shipping_region_id, numericality: { only_integer: true, other_than: 1 }
+    validates :address_city
+    validates :address_line
+    validates :phone_number, format: { with: /\A\d{10,11}\z/ }
     validates :item_id
     validates :user_id
     validates :token
